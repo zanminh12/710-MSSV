@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bài 3</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1 id="time">10:00</h1>
+
+    <script>
+      let time = 600;
+
+      let interval = setInterval(() => {
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+
+        document.getElementById("time").innerText =
+          `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+
+        if (time < 60) {
+          document.getElementById("time").classList.add("warning");
+        }
+
+        time--;
+
+        if (time < 0) {
+          clearInterval(interval);
+          alert("⏰ Hết thời gian!");
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

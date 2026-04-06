@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bài 1</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h2>🛍️ Danh sách sản phẩm</h2>
+
+    <input type="text" id="search" placeholder="Nhập tên sản phẩm..." />
+    <button onclick="search()">Tìm</button>
+
+    <div id="list" class="container"></div>
+
+    <script>
+      let products = [
+        "🍎 iPhone",
+        "📱 Samsung",
+        "📱 Oppo",
+        "📱 Xiaomi",
+        "📱 Nokia",
+      ];
+
+      function render(list) {
+        let html = "";
+        list.forEach((p) => {
+          html += `<div class="item">${p}</div>`;
+        });
+        document.getElementById("list").innerHTML = html;
+      }
+
+      render(products);
+
+      function search() {
+        let keyword = document.getElementById("search").value.toLowerCase();
+
+        let result = products.filter((p) => p.toLowerCase().includes(keyword));
+
+        if (result.length === 0) {
+          document.getElementById("list").innerHTML =
+            "<h3 style='color:red'>❌ Không tìm thấy sản phẩm</h3>";
+        } else {
+          render(result);
+        }
+      }
+    </script>
+  </body>
+</html>
